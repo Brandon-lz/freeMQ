@@ -28,7 +28,7 @@ class Subscriber:
         ctx = zmq.Context.instance()
         self.subscriber = ctx.socket(zmq.SUB)
         self.connect()        
-        print(f"pub to {self.from_url}")
+        print(f"sub from {self.from_url}")
         
 
 
