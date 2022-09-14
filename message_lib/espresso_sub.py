@@ -24,10 +24,10 @@ class Subscriber:
         self.topic:str = topic
         self._pattern = re.compile(r'.*?-')      
         
-        
         ctx = zmq.Context.instance()
         self.subscriber = ctx.socket(zmq.SUB)
         self.connect()        
+        self.set_topic(topic)
         print(f"sub from {self.from_url}")
         
 
@@ -68,6 +68,7 @@ if __name__ == '__main__':
         mesconfig = json.load(f)
 
     subcriber = Subscriber(f"tcp://{mesconfig['proxy_host']}:{mesconfig['out_proxy_port']}")
+    
     subcriber.set_topic('a')
 
 
