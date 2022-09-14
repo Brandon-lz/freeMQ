@@ -1,9 +1,7 @@
 # 数据产生端  生产者
 #
 import time
-
 import zmq
-from zmq.sugar.context import ST
 import json
 
 
@@ -20,7 +18,7 @@ class Publisher:
         self.topic:str = topic
         ctx = zmq.Context.instance()
 
-        self.publisher:ST = ctx.socket(zmq.PUB)
+        self.publisher = ctx.socket(zmq.PUB)
         self.connect()
         print(f"pub to {self.to_url}")
     

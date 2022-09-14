@@ -4,7 +4,6 @@
 
 
 import zmq
-from zmq.sugar.context import ST
 import json,time
 
 # The subscriber thread requests messages starting with
@@ -24,7 +23,7 @@ class Subscriber:
         self.topic:str = topic
         
         ctx = zmq.Context.instance()
-        self.subscriber:ST = ctx.socket(zmq.SUB)
+        self.subscriber = ctx.socket(zmq.SUB)
         self.connect()        
         print(f"pub to {self.from_url}")
         
