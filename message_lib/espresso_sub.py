@@ -5,6 +5,7 @@
 
 import zmq
 import json,time
+import re
 
 # The subscriber thread requests messages starting with
 # A and B, then reads and counts incoming messages.
@@ -21,6 +22,8 @@ class Subscriber:
         """
         self.from_url = from_url
         self.topic:str = topic
+        self._pattern = re.compile(r'.*?-')      
+        
         
         ctx = zmq.Context.instance()
         self.subscriber = ctx.socket(zmq.SUB)
@@ -38,7 +41,12 @@ class Subscriber:
     
     def rcv_json(self):
         msg = self.subscriber.recv().decode('utf-8')
-        rcvdict = json.loads(msg.removeprefix(self.topic+'-'))
+        if self.topic=='':
+            m = self._pattern.match(msg)
+            rcvdict = json.loads(msg[m.span()[1]:])
+            
+        else:
+            rcvdict = json.loads(msg.removeprefix(self.topic+'-'))
         return rcvdict
         
 
