@@ -7,4 +7,4 @@ base zmq
 
 ## usage
 
-see example.py
+see example.py. It's very relaxing to use.
