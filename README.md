@@ -11,7 +11,7 @@ see example.py
 
 ## base PUSH-PULL mode
 
-all of PUSH side's messaes will send to all aviliable PULL sider
+all of PUSH side's messaes will send to all aviliable PULL side
 
 test:
 
