@@ -7,6 +7,16 @@ base zmq
 
 ## usage
 
-see example.py. It's very relaxing to use.
+see example.py
 
-adfadfaf
+## base PUSH-PULL mode
+
+all of PUSH side's messaes will send to all aviliable PULL sider
+
+test:
+
+```shell
+cd push_pull_lib
+python test_customer.py
+python test_producer.py
+```
